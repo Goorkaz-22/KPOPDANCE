@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Administración · K-Pop Dance 2026
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section
+    id="login-screen"
+    class="login-screen"
+>
+
+    <div class="login-card">
+
+        <div class="login-logo">
+
+            <img
+                src="assets/logo.png"
+                alt="K-Pop Dance"
+            >
+
+        </div>
+
+
+        <span class="login-label">
+            ADMINISTRACIÓN
+        </span>
+
+
+        <h1>
+            Panel de control
+        </h1>
+
+
+        <p>
+            Inicia sesión para administrar
+            el concurso.
+        </p>
+
+
+        <form id="login-form">
+
+
+            <div class="form-group">
+
+                <label>
+                    Correo electrónico
+                </label>
+
+                <input
+                    id="login-email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="admin@correo.com"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Contraseña
+                </label>
+
+                <input
+                    id="login-password"
+                    type="password"
+                    required
+                    autocomplete="current-password"
+                    placeholder="••••••••"
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                INICIAR SESIÓN
+            </button>
+
+
+            <div
+                id="login-message"
+                class="message"
+            ></div>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PANEL
+===================================================== -->
+
+<section
+    id="admin-panel"
+    class="admin-panel hidden"
+>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="admin-header">
+
+    <div>
+
+        <span class="admin-label">
+            K-POP DANCE 2026
+        </span>
+
+        <h1>
+            Panel de administración
+        </h1>
+
+    </div>
+
+
+    <div class="admin-actions">
+
+        <span id="admin-email">
+            —
+        </span>
+
+
+        <button
+            id="logout-button"
+            class="logout-button"
+        >
+            CERRAR SESIÓN
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     ESTADO DEL CONCURSO
+===================================================== -->
+
+<section class="dashboard-section">
+
+    <div class="status-card">
+
+        <div>
+
+            <span>
+                ESTADO DEL CONCURSO
+            </span>
+
+            <strong id="contest-status">
+                CARGANDO...
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                CIERRE
+            </span>
+
+            <strong id="contest-end">
+                —
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                PREMIACIÓN
+            </span>
+
+            <strong id="contest-prize">
+                —
+            </strong>
+
+        </div>
+
+
+        <button
+            id="close-contest-button"
+            class="danger-button"
+        >
+            CERRAR CONCURSO
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ESTADÍSTICAS
+===================================================== -->
+
+<section class="dashboard-section">
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <span>
+                TOTAL
+            </span>
+
+            <strong id="total-count">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                PENDIENTES
+            </span>
+
+            <strong id="pending-count">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                APROBADOS
+            </span>
+
+            <strong id="approved-count">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                RECHAZADOS
+            </span>
+
+            <strong id="rejected-count">
+                0
+            </strong>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FILTROS
+===================================================== -->
+
+<section class="dashboard-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <span>
+                PARTICIPANTES
+            </span>
+
+            <h2>
+                Inscripciones
+            </h2>
+
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                class="filter-button active"
+                data-filter="all"
+            >
+                Todos
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="pending"
+            >
+                Pendientes
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="approved"
+            >
+                Aprobados
+            </button>
+
+            <button
+                class="filter-button"
+                data-filter="rejected"
+            >
+                Rechazados
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="participants-table-container"
+        class="table-container"
+    >
+
+        <div class="loading">
+            Cargando...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    id="participant-modal"
+    class="modal hidden"
+>
+
+    <div class="modal-overlay"></div>
+
+
+    <div class="modal-card">
+
+
+        <button
+            id="close-modal"
+            class="close-modal"
+        >
+            ×
+        </button>
+
+
+        <span>
+            PARTICIPANTE
+        </span>
+
+
+        <h2 id="modal-username">
+            —
+        </h2>
+
+
+        <div
+            id="modal-content"
+            class="modal-content"
+        ></div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+</section>
+
+
+<script
+    type="module"
+    src="js/admin.js"
+></script>
+
+
+</body>
+
+</html>
