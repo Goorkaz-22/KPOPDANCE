@@ -150,11 +150,8 @@ input {
 
 
 .logo img {
-
-    width: 125px;
-
+    width: 80px;
     height: auto;
-
 }
 
 
@@ -1611,7 +1608,7 @@ footer {
 .footer-container img {
 
     width:
-        110px;
+        75px;
 
     margin:
         0 auto 15px;
@@ -1716,7 +1713,7 @@ footer {
     .logo img {
 
         width:
-            100px;
+            70px;
 
     }
 
